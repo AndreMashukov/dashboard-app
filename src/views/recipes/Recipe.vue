@@ -96,6 +96,7 @@ export default {
       getInitRecipeTags: 'getInitRecipeTags',
       createItem: 'createItem',
       findImage: 'findImage',
+      refreshView: 'refreshView',
     }),
     clearState() {
       this.qty = [0]
@@ -168,6 +169,7 @@ export default {
           this.showModal = false
           this.clearState()
           this.customer = {}
+          await this.refreshView(data);
         }
       } catch (e) {
         console.log("handleSubmitCreate error:", e);
@@ -180,6 +182,7 @@ export default {
           this.showModal = false
           this.clearState()
           this.customer = {}
+          await this.refreshView(data);
         }
       } catch (e) {
         console.log("handleSubmitCreate error:", e);

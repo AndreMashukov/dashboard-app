@@ -11,6 +11,7 @@ import {
   RECIPE_MEAL,
   RECIPE_TAG_LIST,
   RECIPE_TYPE_LIST,
+  RECIPE_REFRESH
 } from "@/common/apiUrls";
 import axios from "axios";
 import {chunk} from "lodash";
@@ -203,6 +204,15 @@ const actions = {
       dispatch('alert/success', 'Delete successful!', {root: true})
     } catch (e) {
       dispatch('alert/error', 'Error: Get Page Fail!', {root: true})
+    }
+  },
+  // eslint-disable-next-line no-unused-vars
+  async refreshView({dispatch}) {
+    try {
+      await axios.post(RECIPE_REFRESH)
+      dispatch('alert/success', 'Refresh Recipes successful!', {root: true})
+    } catch (e) {
+      dispatch('alert/error', 'Error: Refresh Recipes Fail!', {root: true})
     }
   },
   // eslint-disable-next-line no-unused-vars
